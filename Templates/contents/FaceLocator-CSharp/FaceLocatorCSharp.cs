@@ -4,6 +4,20 @@
 // 2) Go to Function app settings -> App Service settings -> Settings -> Application settings
 //    create a new app setting Vision_API_Subscription_Key and use Computer vision key as value
 
+#if (portalTemplates)
+#r "Microsoft.WindowsAzure.Storage"
+#r "Newtonsoft.Json"
+
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Storage.Table;
+using System.IO;
+
+public static async Task Run(Stream image, string name, IAsyncCollector<FaceRectangle> outTable, TraceWriter log)
+#endif
+#if (vsTemplates)
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +36,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static async Task Run([BlobTrigger("BlobPathValue", Connection = "BlobConnectionValue")]Stream image, string name, [Table("TableNameValue", Connection = "TableConnectionValue")]IAsyncCollector<FaceRectangle> outTable, TraceWriter log)
+#endif
         {
             string result = await CallVisionAPI(image);
             log.Info(result);
@@ -86,5 +101,7 @@ namespace Company.Function
 
             public int Height { get; set; }
         }
+#if (VsTemplates)
     }
 }
+#endif

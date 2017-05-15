@@ -1,3 +1,4 @@
+#if (portalTemplates)
 #r "SendGrid"
 
 using System;

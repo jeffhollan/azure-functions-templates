@@ -1,3 +1,12 @@
+#if (portalTemplates)
+#r "Microsoft.WindowsAzure.Storage"
+
+using System.Net;
+using Microsoft.WindowsAzure.Storage.Table;
+
+public static HttpResponseMessage Run(Person person, CloudTable outTable, TraceWriter log)
+#endif
+#if (VsTemplates)
 using System;
 using System.Net;
 using System.Net.Http;
@@ -13,6 +22,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.AuthLevelValue, "put")]Person person, [Table("TableNameValue", Connection = "ConnectionValue")]CloudTable outTable, TraceWriter log)
+#endif
         {
             if (string.IsNullOrEmpty(person.Name))
             {
@@ -33,5 +43,7 @@ namespace Company.Function
         {
             public string Name { get; set; }
         }
+#if (VsTemplates)
     }
 }
+#endif

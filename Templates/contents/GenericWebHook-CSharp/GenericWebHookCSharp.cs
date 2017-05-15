@@ -1,10 +1,19 @@
+#if (portalTemplates)
+#r "Newtonsoft.Json"
+
+using System;
 using System.Net;
+using Newtonsoft.Json;
+public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
+#endif
+#if (vsTemplates)
+using System.Net;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
 
 namespace Company.Function
 {
@@ -12,6 +21,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static async Task<object> Run([HttpTrigger(WebHookType = "genericJson")]HttpRequestMessage req, TraceWriter log)
+#endif
         {
             log.Info($"Webhook was triggered!");
 
@@ -31,5 +41,7 @@ namespace Company.Function
                 greeting = $"Hello {data.first} {data.last}!"
             });
         }
+#if (VsTemplates)
     }
 }
+#endif

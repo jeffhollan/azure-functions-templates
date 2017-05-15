@@ -1,3 +1,12 @@
+#if (portalTemplates)
+#r "Microsoft.WindowsAzure.Storage"
+
+using System.Net;
+using Microsoft.WindowsAzure.Storage.Table;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ICollector<Person> outTable, TraceWriter log)
+#endif
+#if (VsTemplates)
 using System;
 using System.Net;
 using System.Net.Http;
@@ -13,6 +22,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.AuthLevelValue, "post")]HttpRequestMessage req, [Table("TableNameValue", Connection = "ConnectionValue")]ICollector<Person> outTable, TraceWriter log)
+#endif
         {
             dynamic data = await req.Content.ReadAsAsync<object>();
             string name = data?.name;
@@ -35,5 +45,7 @@ namespace Company.Function
         {
             public string Name { get; set; }
         }
+#if (VsTemplates)
     }
 }
+#endif

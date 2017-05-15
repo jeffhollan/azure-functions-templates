@@ -1,3 +1,9 @@
+#if (portalTemplates)
+using System.Net;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+#endif
+#if (VsTemplates)
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,6 +18,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.AuthLevelValue, "get", "post", Route = null)]HttpRequestMessage req, TraceWriter log)
+#endif
         {
             log.Info("C# HTTP trigger function processed a request.");
 
@@ -30,5 +37,7 @@ namespace Company.Function
                 ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
                 : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
+#if (VsTemplates)
     }
 }
+#endif

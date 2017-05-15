@@ -1,3 +1,10 @@
+#if (portalTemplates)
+using System;
+using System.Threading.Tasks;
+
+public static void Run(string myQueueItem, TraceWriter log)
+#endif
+#if (VsTemplates)
 using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -9,8 +16,11 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]                    
         public static void Run([ServiceBusTrigger("QueueNameValue", AccessRights.AccessRightsValue, Connection = "ConnectionValue")]string myQueueItem, TraceWriter log)
+#endif
         {
             log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
         }
+#if (VsTemplates)
     }
 }
+#endif

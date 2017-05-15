@@ -1,3 +1,9 @@
+#if (portalTemplates)
+using System.Net;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+#endif
+#if (VsTemplates)
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -12,6 +18,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]        
         public static async Task<HttpResponseMessage> Run([HttpTrigger(WebHookType = "github")]HttpRequestMessage req, TraceWriter log)
+#endif
         {
             log.Info("C# HTTP trigger function processed a request.");
 
@@ -23,5 +30,7 @@ namespace Company.Function
 
             return req.CreateResponse(HttpStatusCode.OK, "From Github:" + gitHubComment);
         }
+#if (VsTemplates)
     }
 }
+#endif

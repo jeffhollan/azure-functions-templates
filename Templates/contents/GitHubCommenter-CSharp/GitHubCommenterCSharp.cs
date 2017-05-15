@@ -1,5 +1,14 @@
 // Please follow the link https://developer.github.com/v3/oauth/ to get information on GitHub authentication
 
+#if (portalTemplates)
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+
+public static async Task Run(dynamic payload, TraceWriter log)
+#endif
+#if (VsTemplates)
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using System;
@@ -14,6 +23,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static async Task Run([HttpTrigger(WebHookType = "github")]dynamic payload, TraceWriter log)
+#endif
         {
             if (payload.action != "opened")
             {
@@ -57,5 +67,7 @@ namespace Company.Function
                 await client.PostAsync(url, content);
             }
         }
+#if (VsTemplates)
     }
 }
+#endif

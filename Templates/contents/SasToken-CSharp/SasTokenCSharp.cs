@@ -7,7 +7,18 @@
 // - `BlobName` - *optional*. Used to scope permissions to a particular blob
 // - `Permission` - *optional*. Default value is read permissions. The format matches the enum values of SharedAccessBlobPermissions. 
 //    Possible values are "Read", "Write", "Delete", "List", "Add", "Create". Comma-separate multiple permissions, such as "Read, Write, Create".
+#if (portalTemplates)
+#r "Microsoft.WindowsAzure.Storage"
 
+using System.Net;
+using System.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+
+public static HttpResponseMessage Run(Input input, CloudBlobDirectory blobDirectory, TraceWriter log)
+{
+#endif
+#if (VsTemplates)
 using System;
 using System.IO;
 using System.Net;
@@ -23,6 +34,7 @@ namespace Company.Function
     {
         [FunctionName("FunctionNameValue")]
         public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.AuthLevelValue, "post")]Input input, [Blob("PathValue", FileAccess.Read, Connection = "ConnectionValue")]CloudBlobDirectory blobDirectory, TraceWriter log)
+#endif
         {
             var permissions = SharedAccessBlobPermissions.Read; // default to read permissions
 
@@ -112,5 +124,7 @@ namespace Company.Function
                 Permissions = permissions
             };
         }
+#if (VsTemplates)
     }
 }
+#endif
