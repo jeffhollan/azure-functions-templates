@@ -28,10 +28,13 @@ if (Test-Path $binDirectory) {
 
 
 $nugetPackageDir = Join-Path $binDirectory -ChildPath "nupkg"
+
 nuget.exe pack ($templatesPath + "ItemTemplates.nuspec") -Version 1.0.0 -OutputDirectory $NugetPackageDir
 nuget.exe pack ($templatesPath + "PortalTemplates.nuspec") -Version 1.0.0 -OutputDirectory $NugetPackageDir
-msbuild ($templatesPath + "ProjectTemplate\Template.proj") / t:Clean;
-msbuild ($templatesPath + "ProjectTemplate\Template.proj") / p:PackageVersion=1.0.0
+
+$projectTemplateBuildFile = Join-Path $currentPath -ChildPath "ProjectTemplate\Template.proj"
+msbuild $projectTemplateBuildFile /t:Clean;
+msbuild $projectTemplateBuildFile /p:PackageVersion=1.0.0
 
 $projectTemplateNuget = Join-Path $currentPath -ChildPath "\ProjectTemplate\bin\*.nupkg"
 Copy-Item $projectTemplateNuget $nugetPackageDir
