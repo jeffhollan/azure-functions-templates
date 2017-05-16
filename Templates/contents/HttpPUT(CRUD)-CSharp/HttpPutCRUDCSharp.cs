@@ -6,7 +6,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 public static HttpResponseMessage Run(Person person, CloudTable outTable, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System;
 using System.Net;
 using System.Net.Http;
@@ -43,7 +43,7 @@ namespace Company.Function
         {
             public string Name { get; set; }
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

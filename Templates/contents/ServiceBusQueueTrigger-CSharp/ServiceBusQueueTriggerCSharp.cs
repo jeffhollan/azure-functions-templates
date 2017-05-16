@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 public static void Run(string myQueueItem, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -20,7 +20,7 @@ namespace Company.Function
         {
             log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

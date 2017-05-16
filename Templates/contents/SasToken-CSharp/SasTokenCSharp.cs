@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 public static HttpResponseMessage Run(Input input, CloudBlobDirectory blobDirectory, TraceWriter log)
 {
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System;
 using System.IO;
 using System.Net;
@@ -124,7 +124,7 @@ namespace Company.Function
                 Permissions = permissions
             };
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

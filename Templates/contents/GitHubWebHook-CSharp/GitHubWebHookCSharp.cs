@@ -3,7 +3,7 @@ using System.Net;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -30,7 +30,7 @@ namespace Company.Function
 
             return req.CreateResponse(HttpStatusCode.OK, "From Github:" + gitHubComment);
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

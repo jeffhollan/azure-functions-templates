@@ -8,7 +8,7 @@ using System.Text;
 
 public static async Task Run(dynamic payload, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using System;
@@ -67,7 +67,7 @@ namespace Company.Function
                 await client.PostAsync(url, content);
             }
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

@@ -3,7 +3,7 @@ using System;
 
 public static void Run(TimerInfo myTimer, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -18,7 +18,7 @@ namespace Company.Function
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

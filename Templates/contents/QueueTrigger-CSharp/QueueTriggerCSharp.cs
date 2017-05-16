@@ -3,7 +3,7 @@ using System;
 
 public static void Run(string myQueueItem, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -18,7 +18,7 @@ namespace Company.Function
         {
             log.Info($"C# Queue trigger function processed: {myQueueItem}");
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

@@ -16,7 +16,7 @@ namespace Company.Function
         {
             log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

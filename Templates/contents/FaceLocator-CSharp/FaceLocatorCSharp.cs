@@ -101,7 +101,7 @@ namespace Company.Function
 
             public int Height { get; set; }
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

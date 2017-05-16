@@ -3,7 +3,7 @@ using System.Net;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 #endif
-#if (VsTemplates)
+#if (vsTemplates)
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -37,7 +37,7 @@ namespace Company.Function
                 ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
                 : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

@@ -18,7 +18,7 @@ namespace Company.Function
         {
             log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif

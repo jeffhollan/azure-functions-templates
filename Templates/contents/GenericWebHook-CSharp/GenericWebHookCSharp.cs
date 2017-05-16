@@ -41,7 +41,7 @@ namespace Company.Function
                 greeting = $"Hello {data.first} {data.last}!"
             });
         }
-#if (VsTemplates)
+#if (vsTemplates)
     }
 }
 #endif
