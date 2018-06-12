@@ -26,7 +26,7 @@ The settings for an Azure Cosmos DB trigger specifies the following properties:
 	using Microsoft.Azure.Documents;
 	using System.Collections.Generic;
 	using System;
-	public static void Run(IReadOnlyList<Document> input, TraceWriter log)
+	public static void Run(IReadOnlyList<Document> input, ILogger log)
 	{
 		log.Verbose("Documents modified " + input.Count);
 		log.Verbose("First document Id " + input[0].Id);

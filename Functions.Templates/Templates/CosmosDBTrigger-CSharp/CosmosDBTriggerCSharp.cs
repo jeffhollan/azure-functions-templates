@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Documents;
 
-public static void Run(IReadOnlyList<Document> input, TraceWriter log)
+public static void Run(IReadOnlyList<Document> input, ILogger log)
 #endif
 #if (vsTemplates)
 using System.Collections.Generic;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace Company.Function
 {
@@ -21,7 +22,7 @@ namespace Company.Function
             databaseName: "DatabaseValue",
             collectionName: "CollectionValue",
             ConnectionStringSetting = "ConnectionValue",
-            LeaseCollectionName = "leases")]IReadOnlyList<Document> input, TraceWriter log)
+            LeaseCollectionName = "leases")]IReadOnlyList<Document> input, ILogger log)
 #endif
         {
             if (input != null && input.Count > 0) {
