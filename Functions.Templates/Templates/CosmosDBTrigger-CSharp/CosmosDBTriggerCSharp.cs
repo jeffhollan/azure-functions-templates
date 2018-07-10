@@ -26,8 +26,8 @@ namespace Company.Function
 #endif
         {
             if (input != null && input.Count > 0) {
-                log.Verbose("Documents modified " + input.Count);
-                log.Verbose("First document Id " + input[0].Id);
+                log.LogInformation("Documents modified " + input.Count);
+                log.LogInformation("First document Id " + input[0].Id);
             }
         }
 #if (vsTemplates)
